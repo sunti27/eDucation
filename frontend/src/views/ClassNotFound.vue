@@ -42,8 +42,8 @@
               sm:border-l sm:border-transparent sm:pl-6
             "
           >
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'overview' }"
               class="
                 inline-flex
                 items-center
@@ -62,7 +62,7 @@
                 focus:ring-purple-500
                 focus:ring-offset-2
               "
-              >Go back home</a
+              >Back to Overview</router-link
             >
             <!-- <a
               href="#"
