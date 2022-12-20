@@ -31,6 +31,7 @@
             focus:ring-purple-500
             focus:ring-offset-2
           "
+          @click="isLastCallExitClassModalOpen = true"
         >
           <ArrowLeftIcon class="h-5 w-5 mr-1"></ArrowLeftIcon>
           Back to Overview
@@ -69,6 +70,10 @@
             </button> -->
       </div>
     </div>
+    <LastCallExitClass
+      :open="isLastCallExitClassModalOpen"
+      @close="closeLastCallExitClassModal"
+    ></LastCallExitClass>
   </main>
 </template>
 
@@ -78,6 +83,7 @@ import {} from "@headlessui/vue";
 import {} from "@heroicons/vue/24/outline";
 import { ArrowLeftIcon } from "@heroicons/vue/20/solid";
 import { useStore } from "vuex";
+import LastCallExitClass from "@/components/modals/LastCallExitClass.vue";
 import { useRouter, useRoute } from "vue-router";
 const store = useStore();
 const route = useRoute();
@@ -101,5 +107,12 @@ onMounted(() => {
 const checkClassId = (classId) => {
   if (!store.getters.classes.find((cl) => classId == cl.id))
     router.push({ name: "classNotFound" });
+};
+
+const isLastCallExitClassModalOpen = ref(false);
+
+const closeLastCallExitClassModal = (isAccepted) => {
+  isLastCallExitClassModalOpen.value = false;
+  if (isAccepted) router.push({ name: "overview" });
 };
 </script>
