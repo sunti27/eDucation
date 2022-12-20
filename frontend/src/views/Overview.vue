@@ -551,8 +551,10 @@
                       font-medium
                     "
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900"
-                      >Join</a
+                    <router-link
+                      :to="{ name: 'classroom', query: { classId: cl.id } }"
+                      class="text-indigo-600 hover:text-indigo-900"
+                      >Join</router-link
                     >
                   </td>
                 </tr>
