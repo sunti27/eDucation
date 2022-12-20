@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Overview from "@/views/Overview.vue";
 import Classroom from "@/views/Classroom.vue";
+import ClassNotFound from "@/views/ClassNotFound.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,6 +15,11 @@ const router = createRouter({
       path: "/classroom",
       name: "classroom",
       component: Classroom,
+    },
+    {
+      path: "/404",
+      name: "classNotFound",
+      component: ClassNotFound,
     },
   ],
 });
