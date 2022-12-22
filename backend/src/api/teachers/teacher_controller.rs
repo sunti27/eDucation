@@ -1,5 +1,11 @@
-use crate::entities::teacher;
+use super::teacher_model as teacher;
 use sea_orm::{prelude::*, Set};
+
+pub async fn all_teachers(conn: &DbConn) -> Result<Vec<teacher::Model>, DbErr> {
+    teacher::Entity::find()
+        .all(conn)
+        .await
+}
 
 pub async fn create_teacher(
     conn: &DbConn,

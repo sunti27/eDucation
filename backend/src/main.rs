@@ -1,8 +1,6 @@
 mod server;
 mod database;
-mod routes;
-mod entities;
-mod controllers;
+mod api;
 
 use std::net::SocketAddr;
 

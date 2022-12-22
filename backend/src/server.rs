@@ -1,13 +1,12 @@
 use axum::Router;
 use axum::routing::get;
-use std::sync::Arc;
 use std::net::SocketAddr;
 use sea_orm::DatabaseConnection;
 
 use tower_http::trace::TraceLayer;
 
 use crate::database;
-use crate::routes;
+use crate::api::teachers;
 
 #[derive(Debug, Clone)]
 pub struct AppState {
@@ -20,12 +19,10 @@ pub async fn start(address: SocketAddr) {
     };
 
     let app = Router::new()
-        .nest("/teacher", routes::teacher::get_router())
-        // .route("/", get(sample_get))
-        
-        
-        .with_state(state)
-        .layer(TraceLayer::new_for_http());
+        .route("/", get(sample_get))
+        .nest("/teachers", teachers::get_router())
+        .layer(TraceLayer::new_for_http())
+        .with_state(state);
         
 
     tracing::info!("Listening on http://{}", address);
