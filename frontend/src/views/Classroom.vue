@@ -1,5 +1,5 @@
 <template>
-  <main class="flex-1">
+  <main class="min-h-screen flex flex-col">
     <!-- Page title & actions -->
     <div
       class="
@@ -74,6 +74,26 @@
       :open="isLastCallExitClassModalOpen"
       @close="closeLastCallExitClassModal"
     ></LastCallExitClass>
+
+    <div class="bg-gray-50 grow px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 lg:pb-8">
+      <!-- Blackboard -->
+      <div class="mx-auto w-1/3 h-2 bg-green-700 mb-12 rounded-b-md"></div>
+      <!-- Teachers list -->
+      <TeachersList></TeachersList>
+      <!-- Divider -->
+      <div class="relative my-8">
+        <div class="absolute inset-0 flex items-center" aria-hidden="true">
+          <div class="w-full border-t border-gray-300" />
+        </div>
+        <div class="relative flex justify-center">
+          <span class="bg-gray-50 px-3 text-lg font-medium text-gray-900"
+            >Students</span
+          >
+        </div>
+      </div>
+      <!-- Students list -->
+      <StudentsList></StudentsList>
+    </div>
   </main>
 </template>
 
@@ -84,6 +104,8 @@ import {} from "@heroicons/vue/24/outline";
 import { ArrowLeftIcon } from "@heroicons/vue/20/solid";
 import { useStore } from "vuex";
 import LastCallExitClass from "@/components/modals/LastCallExitClass.vue";
+import TeachersList from "@/components/TeachersList.vue";
+import StudentsList from "@/components/StudentsList.vue";
 import { useRouter, useRoute } from "vue-router";
 const store = useStore();
 const route = useRoute();
